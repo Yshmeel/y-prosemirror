@@ -190,8 +190,7 @@ export const relativePositionToAbsolutePosition = (y, documentType, relPos, mapp
  * @param {string} xmlFragment
  * @return {Y.Doc}
  */
-export function prosemirrorToYDoc (doc, xmlFragment = 'prosemirror') {
-  const ydoc = new Y.Doc()
+export function prosemirrorToYDoc (doc, xmlFragment = 'prosemirror', ydoc) {
   const type = ydoc.get(xmlFragment, Y.XmlFragment)
   if (!type.doc) {
     return ydoc
@@ -213,9 +212,9 @@ export function prosemirrorToYDoc (doc, xmlFragment = 'prosemirror') {
  * @param {string} xmlFragment
  * @return {Y.Doc}
  */
-export function prosemirrorJSONToYDoc (schema, state, xmlFragment = 'prosemirror') {
+export function prosemirrorJSONToYDoc (schema, state, xmlFragment = 'prosemirror', ydoc) {
   const doc = Node.fromJSON(schema, state)
-  return prosemirrorToYDoc(doc, xmlFragment)
+  return prosemirrorToYDoc(doc, xmlFragment, ydoc)
 }
 
 /**
